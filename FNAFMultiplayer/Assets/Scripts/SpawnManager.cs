@@ -44,10 +44,4 @@ public class SpawnManager : NetworkBehaviour
         if (IsServer) me.transform.position = goodSpawn.transform.position;
         else me.transform.position = badSpawn.transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

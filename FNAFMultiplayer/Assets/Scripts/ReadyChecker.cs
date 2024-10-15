@@ -14,7 +14,6 @@ public class ReadyChecker : NetworkBehaviour
 
     private bool readySpawned = false;
     private bool startSpawned = false;
-    private bool readyDeleted = false;
 
     private void SwitchToGame()
     {
@@ -26,7 +25,6 @@ public class ReadyChecker : NetworkBehaviour
     {
         IsReady.Value = true;
         Destroy(buttonMade);
-        readyDeleted = true;
     }
 
     private bool SpawnButton(GameObject button, bool spawnChecker)
@@ -45,12 +43,12 @@ public class ReadyChecker : NetworkBehaviour
     void Update()
     {
         readySpawned = SpawnButton(readyButton, readySpawned);
-        if (!readyDeleted) buttonMade.GetComponent<Button>().onClick.AddListener(SetReadyServerRpc);
+        if (buttonMade != null) buttonMade.GetComponent<Button>().onClick.AddListener(SetReadyServerRpc);
 
         if (IsServer && StartAvailable)
         {
             startSpawned = SpawnButton(startButton, startSpawned);
-            buttonMade.GetComponent<Button>().onClick.AddListener(SwitchToGame);
+            if (buttonMade != null) buttonMade.GetComponent<Button>().onClick.AddListener(SwitchToGame);
         }
 
         // LOOK AT THIS LATER

@@ -9,7 +9,7 @@ public class ReadyManager : MonoBehaviour
     bool CheckIfAllReady()
     {
         // CHANGE THIS LATER
-        if (playerCount == 2)
+        if (playerCount >= 1)
         {
             for (int i = 0; i < playerCount; i++)
             {
